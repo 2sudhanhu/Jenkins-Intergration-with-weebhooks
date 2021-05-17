@@ -1,0 +1,19 @@
+pipeline {
+   agent {
+       label 'Java'
+       
+   }
+
+   stages {
+       stage('gitcheckout') {
+           steps {
+               git branch: 'main', url: 'https://github.com/2sudhanhu/Jenkins-Intergration-with-weebhooks.git'
+           }
+       }
+       stage('pull'){
+           steps {
+               sh 'cd /var/www/html/Jenkins-Intergration-with-weebhooks/ && sudo git pull origin main'
+           }
+       }
+   }
+}
